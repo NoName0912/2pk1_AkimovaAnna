@@ -6,14 +6,9 @@ namespace pz_6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите n");
-            int n = int.Parse(Console.ReadLine());
-
-            int i = 1;
-            while (i * i <= n)
-            {
-                Console.WriteLine((i * i++).ToString());
-            }
+            int a = 10; 
+            int b = 4; 
+            bool c = (a == 10 && b == 4);
         }
     }
 }
