@@ -20,11 +20,10 @@ namespace pz_2_5
                 FactionalNumber factional1 = new FactionalNumber(sign1, a, b);
                 factional1.GetNumber();
                 Console.WriteLine("");
+                var negFN = new NegativeFN(a, b);
+                negFN.GetNumber();
             }
-            FactionalNumber factional2 = new FactionalNumber();
-
-            var negFN = new NegativeFN(8, 10);
-            negFN.GetNumber();
+            
         }
     }
 }
