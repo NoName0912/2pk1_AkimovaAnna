@@ -54,7 +54,7 @@ Content="3" FontSize="15" Click="press3Button_Click"></Button>
 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 Content="0" FontSize="15" Click="press0Button_Click"></Button>
         <Button x:Name="pressButton" Grid.Row="3" Grid.Column="1"
-Content="=" FontSize="15" Grid.ColumnSpan="2" Margin="0,82,0,0" Grid.RowSpan="2" Click="pressButton_Click"/>
+Content="=" FontSize="15" Grid.ColumnSpan="2" Margin="0,87,0,0" Grid.RowSpan="2" Click="pressButton_Click"/>
 
         <Button x:Name="pressPlusButton" Grid.Row="1" Grid.Column="3"
 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
