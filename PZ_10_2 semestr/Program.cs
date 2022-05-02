@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Linq;
 
-//Группа студента вводится числом 
-//Не смогла реализовать сортировку по среднему баллу, реализована сортировка по имени
-//Не смогла реализовать поиск студентов, у которых оценки только 4 или 5, но ещё попытаюсь что-то придумать
+//Группу вводить числом 
 
-namespace PZ_10_2_semestr
+namespace Students
 {
-    class Program
+    internal class Program
     {
         struct Student
         {
             public string Name;
             public int GroupNomber;
-            int[] progress;
+            public int[] progress;
 
             public Student(string Name, int GroupNomber, int[] marks)
             {
@@ -39,25 +37,33 @@ namespace PZ_10_2_semestr
                 Console.Write("Введите номер группы {0}-ого студента: ", i + 1);
                 int nomber = int.Parse(Console.ReadLine());
                 Console.Write("Введите, через запятую, 5 оценок {0}-ого студента: ", i + 1);
-                string[] marks = Console.ReadLine().Split(',');
+                string[] marks = Console.ReadLine().Split(',', StringSplitOptions.RemoveEmptyEntries);
 
                 int[] progress = new int[5];
                 for (int a = 0; a < 5; a++)
-                    progress[a] = int.Parse(marks[a].ToString());
+                    progress[a] = int.Parse(marks[a]);
 
                 students[i] = new Student(name, nomber, progress);
             }
 
-            var stud = from i in students orderby i.Name select i; //Сортировка!
+            var stud = students.OrderBy(s => s.progress.Average()); 
 
-            Console.WriteLine("\n\nУпорядоченный по имени массив студентов: ");
+            Console.WriteLine("\n\nУпорядоченный по возрастанию среднего балла массив студентов: ");
 
             foreach (Student student in stud)
-                Console.WriteLine("\n" + student.ToString());
+                Console.WriteLine($"\n{student}");
+
+            var goodStud = students.Where(s => s.progress.Max() > 3);
+            if (goodStud.Any())
+            {
+                Console.WriteLine("\nСтуденты имеющие оценки 4 и 5: ");
+                foreach (Student student in goodStud)
+                    Console.WriteLine($"\n{student}");
+            }
+            else
+                Console.WriteLine("\nСтудентов имеющих оценки 4 и 5 нет!");
 
             Console.ReadKey();
         }
     }
-
-
 }
